@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/app/modules/course';
 import { CourseService } from 'src/app/services/course.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CourseComponent implements OnInit {
   filterText="";
 
 
-  constructor(private courseService:CourseService , private activatedRoute:ActivatedRoute) { }
+  constructor(private courseService:CourseService , private activatedRoute:ActivatedRoute , private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     
