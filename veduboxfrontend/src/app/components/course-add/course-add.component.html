@@ -1,0 +1,76 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Kurs Ekle</h5>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="courseAddForm">
+          <div class="mb-3">
+            <label for="courseName">Kurs Adı</label>
+            <div class="form-group">
+              <input
+                type="text"
+                id="courseName"
+                formControlName="courseName"
+                class="form-control"
+                placeholder="Kurs Adı"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="teacherId">Eğitmen</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="teacherId"
+                formControlName="teacherId"
+                class="form-control"
+                placeholder="Eğitmen"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="fee">Ücret</label>
+            <div class="form-group">
+              <input
+                type="number"
+                id="fee"
+                formControlName="fee"
+                class="form-control"
+                placeholder="Ücret"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="startDate">Başlangıç Tarihi</label>
+            <div class="form-group">
+              <input
+                type="date"
+                id="startDate"
+                formControlName="startDate"
+                class="form-control"
+                placeholder="Başlangıç Tarihi"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="finishDate">Bitiş Tarihi</label>
+            <div class="form-group">
+              <input
+                type="date"
+                id="finishDate"
+                formControlName="finishDate"
+                class="form-control"
+                placeholder="Bitiş Tarihi"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-fill btn-primary" (click)="addCourse()">Ekle</button>
+      </div>
+    </div>
+  </div>
+</div>
