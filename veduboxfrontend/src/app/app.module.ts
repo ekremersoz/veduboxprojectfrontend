@@ -19,7 +19,8 @@ import { StudentAddComponent } from './components/student-add/student-add.compon
 import { StudentDetailComponent } from './components/student-detail/student-detail.component';
 import { CourseDetailAddComponent } from './components/course-detail-add/course-detail-add.component';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
-import { CourseDetailUpdateComponent } from './components/course-detail-update/course-detail-update.component'
+import { CourseDetailUpdateComponent } from './components/course-detail-update/course-detail-update.component';
+import { LoginComponent } from './components/login/login.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CourseDetailUpdateComponent } from './components/course-detail-update/c
     StudentDetailComponent,
     CourseDetailAddComponent,
     CourseDetailComponent,
-    CourseDetailUpdateComponent
+    CourseDetailUpdateComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
