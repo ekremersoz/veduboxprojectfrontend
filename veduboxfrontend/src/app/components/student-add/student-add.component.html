@@ -1,0 +1,52 @@
+
+
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Öğrenci Ekle</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="studentAddForm">
+            <div class="mb-3">
+              <label for="email">Öğrenci Mail</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="email"
+                  formControlName="email"
+                  class="form-control"
+                  placeholder="Öğrenci mailini giriniz"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="studentName">Öğrenci Adı</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="studentName"
+                  formControlName="studentName"
+                  class="form-control"
+                  placeholder="Öğrenci adını giriniz"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+                <label for="courseId">Kurs Seçiniz</label>
+                <div class="form-group">
+                  <select id="course" name="course"
+                  class="form-control" formControlName="courseId">
+                    <option *ngFor="let item of course" [ngValue]="item.courseId">{{item.courseName}}</option>
+                  </select>
+                </div>
+              </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-primary" (click)="addStudent()">Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

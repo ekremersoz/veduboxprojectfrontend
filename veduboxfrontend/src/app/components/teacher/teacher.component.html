@@ -1,5 +1,5 @@
   <ul class="list-group">
-      <li (click)="setNullCurrentTeacher()" routerLink="/courses" [class]="getAllTeacherClass()" type="button" >Tüm Eğitmenler</li>
+      <li (click)="setNullCurrentTeacher()" routerLink="/courses" [class]="getAllTeacherClass()" type="button" >Tüm Eğitmenlerin Kursları</li>
       <li (click)="setCurrentTeacher(teacher)"
       routerLink="/courses/teacher/{{teacher.teacherId}}" 
       *ngFor="let teacher of teachers" 

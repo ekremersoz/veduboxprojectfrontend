@@ -1,0 +1,59 @@
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Kurs Detay Ekle</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="courseDetailAddForm">
+            <div class="mb-3">
+                <label for="courseId" style="display: none;"><b>Kurs Id</b></label>
+                <input type="number" id="courseId" formControlName="courseId" 
+                class="form-control" style="display: none;" />
+            </div>
+            <div class="mb-3">
+              <label for="courseHeader">Kurs Başlığı</label>
+              <div>
+                <input
+                type="text"
+                id="courseHeader"
+                formControlName="courseHeader"
+                class="form-control"
+                placeholder="Kurs Başlığı Ekle"
+              />
+              </div>
+              
+            </div>
+            <div class="mb-3">
+              <label for="courseCurriculum">Kurs Detayları</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="courseCurriculum"
+                  formControlName="courseCurriculum"
+                  class="form-control"
+                  placeholder="Kurs İçeriği"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="courseDescription">Kurs Açıklaması</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="courseDescription"
+                  formControlName="courseDescription"
+                  class="form-control"
+                  placeholder="Kurs Açıklaması"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-primary" (click)="addCourseDetail()">Ekle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

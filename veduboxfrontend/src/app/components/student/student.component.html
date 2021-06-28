@@ -1,1 +1,29 @@
-<p>student works!</p>
+<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Öğrenci Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+  </div>
+  <div *ngIf="filterText.length>1" class="alert alert-success">
+  {{filterText}} aradınız
+  </div>
+  
+  <table *ngIf="dataLoaded==true" class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Öğrenci Email</th>
+        <th>Öğrenci Adı</th>
+        <th>Kurs Adı</th>
+      </tr>
+    </thead>
+  
+    <tr *ngFor="let student of students">
+      <td>{{ student.email}}</td>
+      <td>{{ student.studentName}}</td>
+      <td>{{ student.courseId}}</td>
+    </tr>
+  </table>
+  
+  

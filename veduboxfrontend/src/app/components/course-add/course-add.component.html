@@ -19,16 +19,14 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="teacherId">Eğitmen</label>
-            <div class="form-group">
-              <input
-                type="number"
-                id="teacherId"
-                formControlName="teacherId"
-                class="form-control"
-                placeholder="Eğitmen"
-              />
+            <label for="teachers">Eğitmen</label>
+            <div>
+              <select id="teachers" name="teachers"
+              class="form-control" formControlName="teacherId">
+                <option *ngFor="let item of teachers" [ngValue]="item.teacherId">{{item.teacherName}}</option>
+              </select>
             </div>
+            
           </div>
           <div class="mb-3">
             <label for="fee">Ücret</label>

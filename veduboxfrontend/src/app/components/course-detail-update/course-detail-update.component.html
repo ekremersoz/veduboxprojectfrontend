@@ -1,0 +1,62 @@
+
+<div class="content">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Kurs Detay Güncelle</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="courseDetailUpdateForm">
+            <div class="mb-3">
+                <label for="courseId" style="display: none;"><b>Kurs Id</b></label>
+                <input type="number" id="courseId" formControlName="courseId"  [(ngModel)]="courseId"
+                class="form-control"/>
+            </div>
+            <div class="mb-3">
+              <label for="courseHeader">Kurs Başlığı</label>
+              <div>
+                <input
+                type="text"
+                id="courseHeader"
+                formControlName="courseHeader"
+                class="form-control"
+                [(ngModel)]="courseHeader"
+              />
+              </div>
+              
+            </div>
+            <div class="mb-3">
+              <label for="courseCurriculum">Kurs Detayları</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="courseCurriculum"
+                  formControlName="courseCurriculum"
+                  class="form-control"
+                  placeholder="Kurs İçeriği"
+                  [(ngModel)]="courseCurriculum"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="courseDescription">Kurs Açıklaması</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="courseDescription"
+                  formControlName="courseDescription"
+                  class="form-control"
+                  placeholder="Kurs Açıklaması"
+                  [(ngModel)]="courseDescription"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-fill btn-primary" (click)="updateCourseDetail()">Güncelle</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

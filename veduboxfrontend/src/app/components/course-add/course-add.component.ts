@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup , FormBuilder,FormControl,Validators } from '@angular/forms';
 import { CourseService } from 'src/app/services/course.service';
 import { ToastrService } from 'ngx-toastr';
+import { TeacherService } from 'src/app/services/teacher.service';
+import { Teacher } from 'src/app/modules/teacher';
 
 @Component({
   selector: 'app-course-add',
@@ -12,11 +14,13 @@ import { ToastrService } from 'ngx-toastr';
 export class CourseAddComponent implements OnInit {
 
 
+  teachers:Teacher[]= [];
   courseAddForm: FormGroup;
-  constructor(private formBuilder:FormBuilder , private courseService:CourseService ,private toastrService:ToastrService) { }
+  constructor(private formBuilder:FormBuilder , private courseService:CourseService ,private toastrService:ToastrService , private teacherService:TeacherService) { }
 
   ngOnInit(): void {
     this.createCourseAddForm();
+    this.getTeacher();
   }
 
 
@@ -32,6 +36,7 @@ export class CourseAddComponent implements OnInit {
   }
 
   addCourse(){
+    console.log(this.courseAddForm);
     if(this.courseAddForm.valid)
     {
       let courseModel = Object.assign({},this.courseAddForm.value);
@@ -52,6 +57,12 @@ export class CourseAddComponent implements OnInit {
        this.toastrService.error("Formu Eksik Doldurdunuz");
     }
     
+  }
+
+  getTeacher(){
+      this.teacherService.getTeacher().subscribe(response=>{
+      this.teachers = response.data;
+    })
   }
 
 }

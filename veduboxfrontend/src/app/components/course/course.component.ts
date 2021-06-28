@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/app/modules/course';
 import { CourseService } from 'src/app/services/course.service';
 import { ToastrService } from 'ngx-toastr';
+import { CourseDetail } from 'src/app/modules/courseDetail';
+import { CourseDetailService } from 'src/app/services/course-detail.service';
 
 
 @Component({
@@ -12,40 +14,56 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CourseComponent implements OnInit {
 
-  courses:Course[] = [];
-  dataLoaded:boolean = false;
-  filterText="";
+  
+  courseDetailControl: CourseDetail[] = [];
+  courses: Course[] = [];
+  dataLoaded: boolean = false;
+  filterText = "";
 
 
-  constructor(private courseService:CourseService , private activatedRoute:ActivatedRoute , private toastrService:ToastrService) { }
+  constructor(private courseService: CourseService, private activatedRoute: ActivatedRoute, private toastrService: ToastrService, private courseDetailService: CourseDetailService) { }
 
   ngOnInit(): void {
-    
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["teacherId"])
-      {
+
+    this.GetAllCourseDetail();
+
+    this.activatedRoute.params.subscribe(params => {
+      if (params["teacherId"]) {
         this.getCourseByTeacherId(params["teacherId"])
       }
-      else
-      {
+      else {
         this.getCourse();
       }
     })
-     
+
   }
 
-  getCourse(){
-    this.courseService.getCourse().subscribe(response=>{
+  getCourse() {
+    this.courseService.getCourse().subscribe(response => {
+      this.courses = response.data
+      this.dataLoaded = true;
+      this.toastrService.success("Kurslar Listelendi")
+    })
+  }
+
+
+  getCourseByTeacherId(teacherId: number) {
+    this.courseService.getCourseByTeacherId(teacherId).subscribe(response => {
       this.courses = response.data
       this.dataLoaded = true;
     })
   }
 
-
-  getCourseByTeacherId(teacherId:number){
-    this.courseService.getCourseByTeacherId(teacherId).subscribe(response=>{
-      this.courses = response.data
-      this.dataLoaded = true;
+  GetAllCourseDetail() {
+    this.courseDetailService.GetAllCourseDetail().subscribe(response => {
+      this.courseDetailControl = response.data;
     })
   }
+
+
+  
+
+
+
+
 }

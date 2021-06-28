@@ -1,34 +1,90 @@
-<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+<div
+  *ngIf="dataLoaded == false"
+  class="spinner-border text-primary"
+  role="status"
+>
   <span class="visually-hidden">Loading...</span>
 </div>
 
 <div class="mb-3">
   <label for="filterText" class="form-label">Kurs Ara</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="arama ifadesi giriniz"
+  />
 </div>
-<div *ngIf="filterText.length>1" class="alert alert-success">
-{{filterText}} aradınız
+<div *ngIf="filterText.length > 1" class="alert alert-success">
+  {{ filterText }} aradınız
 </div>
-
-<table *ngIf="dataLoaded==true" class="table">
-  <thead class="thead-dark">
-    <tr>
-      <!--<th>Kurs Id</th>
+<div>
+  <table *ngIf="dataLoaded == true" class="table table-hover">
+    <thead>
+      <tr>
+        <!--<th>Kurs Id</th>
       <th>Öğretmen Id</th> -->
-      <th>Kurs Adı</th>
-      <th>Ücret</th>
-      <th>Başlangıç Tarihi</th>
-      <th>Bitiş Tarihi</th>
-    </tr>
-  </thead>
+        <th scope="col">Kurs Adı</th>
+        <th scope="col">Ücret</th>
+        <th scope="col">Başlangıç Tarihi</th>
+        <th scope="col">Bitiş Tarihi</th>
+        <th scope="col">Detay</th>
+        <th scope="col">Detay Güncelle</th>
+        <th scope="col">Detay Ekle</th>
+      </tr>
+    </thead>
 
-  <tr *ngFor="let course of courses | filterPipe:filterText">
-    <!--<td>{{ course.courseId }}</td>
+    <tbody>
+      <tr *ngFor="let course of courses | filterPipe: filterText">
+        <!--<td>{{ course.courseId }}</td>
     <td>{{ course.teacherId }}</td> -->
-    <td>{{ course.courseName | uppercase}}</td>
-    <td>{{ course.fee | currency: "TRY":"":"" }}</td>
-    <td>{{ course.startDate | date: 'dd/MM/yyyy'}}</td>
-    <td>{{ course.finishDate | date: 'dd/MM/yyyy'}}</td>
-  </tr>
-</table>
+        <td scope="row">{{ course.courseName | uppercase }}</td>
+        <td scope="row">{{ course.fee | currency: "TRY":"":"" }}</td>
+        <td scope="row">{{ course.startDate | date: "dd/MM/yyyy" }}</td>
+        <td scope="row">{{ course.finishDate | date: "dd/MM/yyyy" }}</td>
 
+        <td scope="row">
+          <button
+            class="btn btn-success"
+            click="routerLink"
+            routerLink="/CourseDetails/GetCoruseDetailByCourseId/{{
+              course.courseId
+            }}"
+          >
+            Detay
+          </button>
+        </td>
+        <td scope="row">
+          <button
+            class="btn btn-info"
+            click="routerLink"
+            routerLink="/CourseDetail/Update/{{ course.courseId }}"
+          >
+            Detay Güncelle
+          </button>
+        </td>
+
+        <!-- <td>
+          <button
+            class="btn btn-warning"
+            click="routerLink"
+            routerLink="/CourseDetail/Add/{{course.courseId}}"
+          >
+            Detay Ekle
+          </button>
+        </td> -->
+
+        <td scope="row">
+          <button
+            class="btn btn-warning"
+            click="routerLink"
+            routerLink="/CourseDetail/Add/{{ course.courseId }}"
+          >
+            Detay Ekle
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

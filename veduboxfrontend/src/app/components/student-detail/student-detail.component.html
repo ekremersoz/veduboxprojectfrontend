@@ -1,0 +1,35 @@
+<div *ngIf="dataLoaded==false" class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+  
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Öğrenci Ara</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+  </div>
+  <div *ngIf="filterText.length>1" class="alert alert-success">
+  {{filterText}} aradınız
+  </div>
+  
+  <table *ngIf="dataLoaded==true" class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Öğrenci Email</th>
+        <th scope="col">Öğrenci Adı</th>
+        <th scope="col">Kurs Adı</th>
+        <th scope="col">Kurs Başlangıç Tarihi</th>
+        <th scope="col">Kurs Bitiş Tarihi</th>
+        <th scope="col">Öğretmen Adı</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of studentDetail">
+      <td scope="row">{{ item.studentEmail}}</td>
+      <td scope="row">{{ item.studentName}}</td>
+      <td scope="row">{{ item.courseName}}</td>
+      <td scope="row">{{ item.courseStartDate | date: 'dd/MM/yyyy'}}</td>
+      <td scope="row">{{ item.courseFinishDate | date: 'dd/MM/yyyy'}}</td>
+      <td scope="row">{{ item.teacherName}}</td>
+    </tr>
+  </tbody>
+  </table>
+  
