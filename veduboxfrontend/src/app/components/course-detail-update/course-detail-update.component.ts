@@ -13,6 +13,7 @@ import { ActivatedRoute ,  Router  } from '@angular/router';
 })
 export class CourseDetailUpdateComponent implements OnInit {
 
+  courseDetailControl:CourseDetail;
   courseDetail:CourseDetail;
   courseId:number;
   courseHeader:string;
@@ -28,6 +29,7 @@ export class CourseDetailUpdateComponent implements OnInit {
      
       this.GetCoruseDetailByCourseId(params["courseId"])
       this.createCourseDetailUpdateForm();
+      this.GetCoruseDetailByCourseIdForControl(params["courseId"])
   })
   }
 
@@ -43,7 +45,8 @@ export class CourseDetailUpdateComponent implements OnInit {
 
 
   updateCourseDetail(){
-    console.log(this.courseDetailUpdateForm);
+    if (this.courseDetailControl) {
+      console.log(this.courseDetailUpdateForm);
     if(this.courseDetailUpdateForm.valid)
     {
       let courseModel = Object.assign({},this.courseDetailUpdateForm.value);
@@ -63,6 +66,10 @@ export class CourseDetailUpdateComponent implements OnInit {
     }else{
        this.toastrService.error("Formu Eksik Doldurdunuz");
     }
+    }else{
+      this.toastrService.warning("İlk önce kurs detay bilgisi eklemelisiniz")
+    }
+    
     
   }
 
@@ -76,7 +83,11 @@ export class CourseDetailUpdateComponent implements OnInit {
     })
   }
 
-
+  GetCoruseDetailByCourseIdForControl(courseId: number) {
+    this.courseDetailService.GetCoruseDetailByCourseId(courseId).subscribe(response => {
+      this.courseDetailControl = response.data;
+    })
+  }
 
 
 }

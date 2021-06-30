@@ -43,23 +43,22 @@
         <td scope="row">{{ course.fee | currency: "TRY":"":"" }}</td>
         <td scope="row">{{ course.startDate | date: "dd/MM/yyyy" }}</td>
         <td scope="row">{{ course.finishDate | date: "dd/MM/yyyy" }}</td>
-
+        
         <td scope="row">
-          <button
+          <button           
             class="btn btn-success"
-            click="routerLink"
             routerLink="/CourseDetails/GetCoruseDetailByCourseId/{{
               course.courseId
             }}"
           >
-            Detay
+            Detay 
           </button>
         </td>
         <td scope="row">
           <button
             class="btn btn-info"
             click="routerLink"
-            routerLink="/CourseDetail/Update/{{ course.courseId }}"
+            routerLink="/CourseDetail/Update/{{course.courseId }}"
           >
             Detay Güncelle
           </button>

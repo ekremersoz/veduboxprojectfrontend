@@ -1,8 +1,18 @@
+<body>
+  <div class="bg-light p-5 rounded mt-5" *ngIf="courseDetail">
+    <h1>{{ courseDetail.courseHeader }}</h1>
+    <h5>Kurs İçeriği</h5>
+    <p>{{ courseDetail.courseCurriculum }}</p>
+  </div>
+  <div class="bg-light p-5 rounded mt-3" *ngIf="courseDetail">
+    <h1>Kurs Açıklaması</h1>
+    <p>{{ courseDetail.courseDescription }}</p>
+  </div>
+</body>
 
 
-
-<div *ngIf="courseDetail">
-    <div>{{courseDetail.courseHeader}}</div>
-    <div>{{courseDetail.courseCurriculum}}</div>
-    <div>{{courseDetail.courseDescription}}</div>
-</div>
+<body>
+    <div class="bg-light p-5 rounded mt-5" *ngIf="!courseDetail">
+        <h2>Kurs Detay Bilgisi Bulunmamaktadır..</h2>
+    </div>
+  </body>

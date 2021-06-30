@@ -13,7 +13,7 @@ import { ActivatedRoute ,  Router  } from '@angular/router';
 export class CourseDetailAddComponent implements OnInit {
 
  
-
+  courseDetailControl:CourseDetail;
   courseId: number = 0;
   courseDetail:CourseDetail[] = [];
   courseDetailAddForm:FormGroup;
@@ -26,6 +26,7 @@ export class CourseDetailAddComponent implements OnInit {
      
         this.getCoutseId(params["courseId"])
         this.createCourseDetailAddForm();
+        this.GetCoruseDetailByCourseId(params["courseId"]);
     })
 
 
@@ -46,32 +47,44 @@ export class CourseDetailAddComponent implements OnInit {
 
 
   addCourseDetail(){
-    console.log(this.courseDetailAddForm);
-    if(this.courseDetailAddForm.valid)
-    {
-      let courseModel = Object.assign({},this.courseDetailAddForm.value);
-      this.courseDetailService.addCourseDetail(courseModel).subscribe(response=>{
-        this.toastrService.success(response.message);  
-      },responseError=>{
-        
-        
-        if(responseError.error.ValidationErrors.length>0){
-          console.log(responseError.error.ValidationErrors);
-          for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {            
-            this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage , "Doğrulama Hatası");
-          }          
-        }
-     });
-       
+    if (this.courseDetailControl) {
+      this.toastrService.warning("Bu kursa detay alanı girilmiş");
     }else{
-       this.toastrService.error("Formu Eksik Doldurdunuz");
+      console.log(this.courseDetailAddForm);
+      if(this.courseDetailAddForm.valid)
+      {
+        let courseModel = Object.assign({},this.courseDetailAddForm.value);
+        this.courseDetailService.addCourseDetail(courseModel).subscribe(response=>{
+          this.toastrService.success(response.message);  
+        },responseError=>{
+          
+          
+          if(responseError.error.ValidationErrors.length>0){
+            console.log(responseError.error.ValidationErrors);
+            for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {            
+              this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage , "Doğrulama Hatası");
+            }          
+          }
+       });
+         
+      }else{
+         this.toastrService.error("Formu Eksik Doldurdunuz");
+      }
     }
+  
     
   }
 
 
   getCoutseId(courseId: number) {
     this.courseId = courseId;
+  }
+
+
+  GetCoruseDetailByCourseId(courseId: number) {
+    this.courseDetailService.GetCoruseDetailByCourseId(courseId).subscribe(response => {
+      this.courseDetailControl = response.data;
+    })
   }
 
 

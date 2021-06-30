@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Course } from '../modules/course';
 import { ListResponseModel } from '../modules/listResponseModel';
 import { ResponseModel } from '../modules/responseModel';
+import { SingleResponseModel } from '../modules/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,11 @@ export class CourseService {
   getCourse():Observable<ListResponseModel<Course>>{
     let newPath = this.apiUrl+"Courses/GetAllCourse";
     return this.httpClient.get<ListResponseModel<Course>>(newPath);
+  }
+
+  getCourseById(courseId:number):Observable<SingleResponseModel<Course>>{
+    let newPath = this.apiUrl+"Courses/GetCourseByCourseId?courseId="+courseId;
+    return this.httpClient.get<SingleResponseModel<Course>>(newPath);
   }
 
   getCourseByTeacherId(teacherId:number):Observable<ListResponseModel<Course>>{

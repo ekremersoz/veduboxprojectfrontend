@@ -15,7 +15,9 @@ import { CourseDetailService } from 'src/app/services/course-detail.service';
 export class CourseComponent implements OnInit {
 
   
+  courseDetailCheck:boolean;
   courseDetailControl: CourseDetail[] = [];
+  courseDetail:CourseDetail;
   courses: Course[] = [];
   dataLoaded: boolean = false;
   filterText = "";
@@ -57,6 +59,18 @@ export class CourseComponent implements OnInit {
   GetAllCourseDetail() {
     this.courseDetailService.GetAllCourseDetail().subscribe(response => {
       this.courseDetailControl = response.data;
+    })
+
+    
+  }
+
+
+
+  
+  CheckİsCourseDetail(courseId:number) {
+    this.courseDetailService.GetCoruseDetailByCourseId(courseId).subscribe(response=>{
+      this.courseDetailCheck = response.success;
+      console.log("ooooooooooooooooooooooooooo");
     })
   }
 
