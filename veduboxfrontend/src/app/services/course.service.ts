@@ -5,13 +5,14 @@ import { Course } from '../modules/course';
 import { ListResponseModel } from '../modules/listResponseModel';
 import { ResponseModel } from '../modules/responseModel';
 import { SingleResponseModel } from '../modules/singleResponseModel';
+import { WebApiUrlAddress } from '../modules/WebApi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
-
-  apiUrl = "https://localhost:44351/api/"
+  
+  apiUrl = "https://localhost:44351/api/";
 
   constructor(private httpClient:HttpClient) { }
 

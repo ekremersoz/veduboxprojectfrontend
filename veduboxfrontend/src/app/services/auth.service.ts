@@ -4,6 +4,7 @@ import { LoginModel } from '../modules/loginModel';
 import { ResponseModel } from '../modules/responseModel';
 import { SingleResponseModel } from '../modules/singleResponseModel';
 import { TokenModel } from '../modules/tokenModel';
+import { WebApiUrlAddress } from '../modules/WebApi';
 
 @Injectable({
   providedIn: 'root'
