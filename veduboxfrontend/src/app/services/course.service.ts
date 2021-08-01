@@ -5,20 +5,23 @@ import { Course } from '../modules/course';
 import { ListResponseModel } from '../modules/listResponseModel';
 import { ResponseModel } from '../modules/responseModel';
 import { SingleResponseModel } from '../modules/singleResponseModel';
-import { WebApiUrlAddress } from '../modules/WebApi';
+import { apiUrl } from '../modules/WebApi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
   
-  apiUrl = "https://localhost:44351/api/";
+  
+  apiUrl = apiUrl;
 
   constructor(private httpClient:HttpClient) { }
 
+  
   getCourse():Observable<ListResponseModel<Course>>{
     let newPath = this.apiUrl+"Courses/GetAllCourse";
     return this.httpClient.get<ListResponseModel<Course>>(newPath);
+    
   }
 
   getCourseById(courseId:number):Observable<SingleResponseModel<Course>>{

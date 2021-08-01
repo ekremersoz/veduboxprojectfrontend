@@ -4,14 +4,14 @@ import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../modules/listResponseModel';
 import { ResponseModel } from '../modules/responseModel';
+import { apiUrl } from '../modules/WebApi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherService {
 
-  apiUrl = "https://localhost:44351/api/"
-
+  apiUrl = apiUrl;
   constructor(private httpClient:HttpClient) { }
 
   getTeacher():Observable<ListResponseModel<Teacher>>{

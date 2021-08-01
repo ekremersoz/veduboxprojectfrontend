@@ -4,14 +4,14 @@ import { LoginModel } from '../modules/loginModel';
 import { ResponseModel } from '../modules/responseModel';
 import { SingleResponseModel } from '../modules/singleResponseModel';
 import { TokenModel } from '../modules/tokenModel';
-import { WebApiUrlAddress } from '../modules/WebApi';
+import { apiUrl } from '../modules/WebApi';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  apiUrl = "https://localhost:44351/api/Auths/"
+  apiUrl = apiUrl+"Auths/";
   constructor(private httpClient : HttpClient) { }
 
 
