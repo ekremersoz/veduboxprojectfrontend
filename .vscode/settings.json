@@ -1,4 +1,9 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/28b004fe-5d5d-474e-934d-a94a0ab124b2/resourceGroups/VeduboxProject/providers/Microsoft.Web/sites/veduboxproject",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "azureFunctions.deploySubpath": ".",
+    "azureFunctions.postDeployTask": "npm install (functions)",
+    "azureFunctions.projectLanguage": "TypeScript",
+    "azureFunctions.projectRuntime": "~3",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.preDeployTask": "npm prune (functions)"
 }
