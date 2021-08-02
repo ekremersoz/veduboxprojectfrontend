@@ -1,13 +1,3 @@
 {
-<<<<<<< HEAD
     "appService.deploySubpath": "."
-=======
-    "appService.deploySubpath": ".",
-    "azureFunctions.deploySubpath": ".",
-    "azureFunctions.postDeployTask": "npm install (functions)",
-    "azureFunctions.projectLanguage": "TypeScript",
-    "azureFunctions.projectRuntime": "~3",
-    "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "npm prune (functions)"
->>>>>>> 36d159baf0d98f9c59e62dbf73ca7b5d3038d205
 }
