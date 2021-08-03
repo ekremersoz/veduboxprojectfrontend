@@ -16,15 +16,19 @@ constructor(private authService:AuthService , private toastrService:ToastrServic
 
 
   canActivate(
-    route: ActivatedRouteSnapshot,
+    oute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.authService.isAuthenticated()){
+
+      if(this.authService.isAuthenticated()){
       return true;
     }else{
       this.router.navigate(["Login"]);
       this.toastrService.error("Sisteme giriş yapmalısınız")
       return false;
     }
-  }
-  
+
+      
+
+  } 
 }
+

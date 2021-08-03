@@ -16,7 +16,7 @@ const routes: Routes = [
   {path:"" ,pathMatch:"full", component:CourseComponent},
   {path:"courses" , component:CourseComponent},
   {path:"courses/teacher/:teacherId" , component:CourseComponent},
-  {path:"Course/Add" , component:CourseAddComponent , canActivate:[LoginGuard]},
+  {path:"Course/Add" , component:CourseAddComponent /** , canActivate:[LoginGuard]*/},
   {path:"Teacher/Add" , component:TeacherAddComponent},
   {path:"students", component:StudentComponent},
   {path:"Student/Add",component:StudentAddComponent},
